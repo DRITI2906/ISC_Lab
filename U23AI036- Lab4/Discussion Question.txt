@@ -1,0 +1,9 @@
+1) How many possible substitution keys exist? Why is this theoretically secure?
+There are 26! (26 factorial) possible substitution keys. This number is extremely large (4.0329×10 ^26), which theoretically makes it secure because it would be computationally infeasible to try every possible key to decrypt a message through brute-force.
+
+2) Why is substitution cipher practically insecure despite its large key space?
+Despite the large key space, substitution ciphers are practically insecure because they are easily broken using frequency analysis. This is due to the non-uniform distribution of letter frequencies in languages like English (e.g., E, T, A, O are the most common letters). An attacker can analyze the frequency of letters in the ciphertext and map them back to the most common letters in the English alphabet to deduce the key
+
+3) How does frequency analysis help in breaking substitution ciphers?
+Frequency analysis helps break substitution ciphers by exploiting the fact that certain letters appear more frequently than others in a given language. By counting the occurrences of each character in the ciphertext, an attacker can compare these frequencies to the known average letter frequencies of the plaintext language (e.g., English). For example, if 'X' is the most frequent letter in the ciphertext, it is likely to correspond to 'E' (the most common letter in English). This allows the attacker to gradually deduce the substitution mapping and consequently decrypt the message without knowing the key
+s
