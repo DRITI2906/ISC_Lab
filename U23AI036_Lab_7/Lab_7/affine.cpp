@@ -112,16 +112,20 @@ void crack_mode(const string& cipher) {
         cerr << "Empty ciphertext!\n";
         return;
     }
-    auto [ymax, y2nd] = top_two_letters(in);
-    vector<pair<char,char>> guesses = {
-        {'E', ymax}, {'T', y2nd},
-        {'E', y2nd}, {'T', ymax}
+   auto result = top_two_letters(in);
+   auto ymax = result.first;
+   auto y2nd = result.second;
+
+   vector<pair<char, char>> pairs = {
+       {'E', ymax}, {'T', y2nd},
+       {'E', y2nd}, {'T', ymax}
     };
+
     cout << "Ciphertext: " << in << "\n";
-    for (size_t i = 0; i < guesses.size(); i += 2) {
+    for (size_t i = 0; i < pairs.size(); i += 2) {
         int a, b;
-        if (solve_keys(guesses[i].first, guesses[i].second,
-                       guesses[i+1].first, guesses[i+1].second, a, b)) {
+        if (solve_keys(pairs[i].first, pairs[i].second,
+                       pairs[i+1].first, pairs[i+1].second, a, b)) {
             try {
                 string plain = decrypt_text(in, a, b);
                 cout << "Candidate (a=" << a << ", b=" << b << "): "
